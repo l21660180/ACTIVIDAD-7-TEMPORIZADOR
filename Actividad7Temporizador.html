@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- Especifica la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea responsive -->
+    <title>Temporizador de Cuenta Regresiva</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+
+    <!-- Agrego estilos CSS para darle un diseño atractivo y moderno -->
+    <style>
+        /* Estilos globales para el body */
+        body {
+            display: flex; /* Utilizamos flexbox para alinear los elementos */
+            justify-content: center; /* Centra horizontalmente el contenido */
+            align-items: center; /* Centra verticalmente el contenido */
+            height: 100vh; /* La página ocupará toda la altura de la ventana */
+            margin: 0; /* Elimina los márgenes predeterminados */
+            font-family: 'Arial', sans-serif; /* Fuente limpia y moderna */
+            background-color: #3498db; /* Fondo azul moderno */
+            color: white; /* Color de texto blanco para mejor contraste */
+        }
+
+        /* Estilos para el título del temporizador */
+        h1 {
+            text-align: center; /* Centra el título */
+            font-size: 3rem; /* Tamaño grande del texto */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+
+        /* Estilos para el contador que muestra el tiempo */
+        #contador {
+            font-size: 6rem; /* Tamaño muy grande del contador */
+            background-color: #2ecc71; /* Fondo verde atractivo */
+            padding: 20px 40px; /* Espaciado interno */
+            border-radius: 20px; /* Bordes redondeados para un diseño moderno */
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Sombra sutil debajo del contador */
+            text-align: center; /* Alineación centrada del texto dentro del div */
+        }
+    </style>
+</head>
+<body>
+    <!-- Título del temporizador -->
+    <h1>Temporizador</h1>
+
+    <!-- Div donde se mostrará el valor del temporizador -->
+    <div id="contador">50</div> <!-- Empieza en 50 -->
+
+    <!-- Aquí comienza el script de JavaScript -->
+    <script>
+        // Seleccionamos el elemento HTML donde se mostrará el valor del temporizador
+        let contador = document.getElementById('contador');
+
+        // Definimos el valor inicial del temporizador (50 segundos)
+        let tiempoRestante = 50;
+
+        // Función que realiza la cuenta regresiva y actualiza el contenido en el HTML
+        function cuentaRegresiva() {
+            // Decrementamos el valor del temporizador en 1 segundo
+            tiempoRestante--;
+
+            // Actualizamos el valor que se muestra en la página dentro del div
+            contador.textContent = tiempoRestante;
+
+            // Si el valor del temporizador es mayor que 0, seguimos la cuenta regresiva
+            if (tiempoRestante > 0) {
+                // Volvemos a ejecutar esta misma función después de 1 segundo
+                setTimeout(cuentaRegresiva, 1000);
+            }
+        }
+
+        // Llamamos a la función cuentaRegresiva por primera vez después de 1 segundo
+        setTimeout(cuentaRegresiva, 1000);
+    </script>
+</body>
+</html>
